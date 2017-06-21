@@ -1,0 +1,19 @@
+testing:
+    build: .
+    dockerfile: Dockerfile-test
+    links:
+        - service-web
+
+service-web:
+    image: httpd
+    container_name: "web"
+    ports:
+        - "80:80"
+    links:
+        - "service-db"
+
+service-db:
+    image: mysql
+    container_name: "db"
+    environment:
+        MYSQL_ROOT_PASSWORD: 1234
