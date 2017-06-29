@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+    auth:
+        build:
+            context: ./auth
+        image: sicpa/auth
+        container_name: "auth"
+        volumes:
+        - ${_ROOT_DIR}/auth/wildfly/deployments:/deployments
+        - ${_ROOT_DIR}/auth/wildfly/configuration:/configuration
+
+    mysql:
+        image: mysql
+        container_name: "mysql"
+        ports:
+            - "8888:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: 1234
