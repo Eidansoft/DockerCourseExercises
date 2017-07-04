@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+    sym1:
+        build:
+            context: ./sym1
+        image: test/sym1
+        container_name: "sym1"
+        # ports:
+        #     - "8888:3306"
